@@ -13,6 +13,7 @@
         <script src="/javascripts/codemirror/mode/diff/diff.js"></script>
         <script src="/javascripts/create.js" type="text/javascript"></script>
         <script src="/javascripts/refheap.js" type="text/javascript"></script>
+        <script src="/javascripts/pastes.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="site-container">
@@ -29,17 +30,7 @@
             <div id="content">
                 <div id="container" class="clearfix">
                     <div id="main-container">
-                        <div id="paste-container">
-                            <form name="paste" action="submitPaste" method="post">
-                                <div id="paste-header">
-                                    <select id="language" name="language">
-                                        <option value=""></option>
-                                        <option selected value=""></option>
-                                    </select>
-                                    <input id="submit-button" value="Submit" type="submit" />
-                                </div>
-                                <textarea name="paste" id="paste"></textarea>
-                            </form>
+                        <div id="paste" class="syntax">
                         </div>
                     </div>
                 </div>
