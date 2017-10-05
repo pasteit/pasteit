@@ -40,68 +40,34 @@ $(document).ready(function ( ) {
         "OCaml"           : ["ocaml"],
     };
 
+    var mimes = {
+        "C++"  : "text/x-c++src",
+        "C"    : "text/x-csrc",
+        "C#"   : "text/x-csharp",
+        "Objective-C" : "text/x-objectivec",
+        "Java" : "text/x-java",
+    };
+
     for(var l in languages) {
         var h = languages[l];
         $("#language").append("<option value='"+h+"'>"+l+"</option>");
     }
 
-
     $("#language").chosen();
 
     $("#language").on("change", function(item) {
-        var selected = $("option:selected", this);
-        console.log(selected.val());
-
-        editor.setOption("mode", selected.val());
-        editor.refresh();
-        
-        setLang();
+        setMime();
     });
 
     $("#submit-button").on("click", function() {
-        console.log("Test");
         $( "form[name=paste]" ).submit();
     });
 
-    var setupLang = function( lang, editor ) {
-        if ( lang ) {
-            setMode(lang, editor);
-        } else {
-            editor.setOption( "mode", null );
-        }
+    var setMime = function() {
+        var mime = $("#language option:selected").text();
+        $("#mime").val(mimes[mime]);
     };
-
-    var setLang = function () {
-        setupLang( $("#language option:selected").text(), editor );
-    };
-
-    var isString = function(obj) {
-        return toString.call(obj) == '[object String]';
-    };
-
-    var normalizeMode = function(mode) {
-        if (isString(mode)) return {mode: mode, path: mode + '/' + mode};
-        else return mode;
-    };
-
-    var fnotLoaded = function(mode) {
-        return !(mode in loaded);
-    };
-
-    var setMode = function(modes, editor) {
-        var modes = $.map(modes, function(mode, index) { return normalizeMode(mode) }),
-            notLoaded = $.grep(modes, fnotLoaded),
-            promises = $.map(notLoaded, function(mode, index) {
-                return $.getScript("/js/codemirror/mode/" + mode.path + ".js");
-            });
-        return $.when.apply($, promises).done(function() {
-            $.each(notLoaded, function(mode, i) {
-                loaded[mode] = true;
-            });
-            editor.setOption("mode", modes[modes.length - 1].mode);
-        });
-    };
-
+    
     editor.setOption( "extraKeys", {
         "Ctrl-Enter": paste,
         "Alt-W": toggleWrapping
@@ -114,7 +80,6 @@ $(document).ready(function ( ) {
             editor.refresh();
         }
     };
-
 
     $(window).on( "resize", function () {
         setCodeHeight(editor);

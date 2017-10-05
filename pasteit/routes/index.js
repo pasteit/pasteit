@@ -16,8 +16,9 @@ router.get('/', function(req, res, next) {
 router.post('/submitPaste', function(req, res, next) { 
     var l = req.body.language;
     var p = req.body.paste;
+    var m = req.body.mime;
     
-    res.render('pasted', { language: l, pastedcontent: p });
+    res.render('pasted', { language: l, pastedcontent: p, mime: m });
 });
 
 module.exports = router;
