@@ -15,5 +15,8 @@
     "code"
   ],
   "author": "Maximilian Klingmann",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "ejs": "^2.5.7"
+  }
 }
