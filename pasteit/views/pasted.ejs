@@ -11,11 +11,13 @@
         <link href="/stylesheets/chosen.css" rel="stylesheet" type="text/css" />
         <script src="/javascripts/codemirror/lib/codemirror.js"></script>
         <script src="/javascripts/codemirror/mode/diff/diff.js"></script>
-        <script src="/javascripts/create.js" type="text/javascript"></script>
+        <script src="/javascripts/codemirror/mode/<%= language %>/<%= language %>.js"></script>
         <script src="/javascripts/refheap.js" type="text/javascript"></script>
-        <script src="/javascripts/pastes.js" type="text/javascript"></script>
+        <script src="/javascripts/pasted.js" type="text/javascript"></script>
     </head>
     <body>
+        <input type="hidden" id="pasted-content" class="pasted-content" value="<%= pastedcontent %>" />
+        <input type="hidden" id="selected-mode" class="selected-mode" value="<%= language %>" />
         <div id="site-container">
             <div id="header">
                 <a id="site" href="/">PasteIt!</a>
@@ -30,7 +32,8 @@
             <div id="content">
                 <div id="container" class="clearfix">
                     <div id="main-container">
-                        <div id="paste" class="syntax">
+                        <div id="paste-container">
+                            <textarea id="paste" name="paste"></textarea>
                         </div>
                     </div>
                 </div>

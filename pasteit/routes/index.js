@@ -14,10 +14,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/submitPaste', function(req, res, next) { 
-    var lang = req.body.language;
-    var paste = req.body.paste;
+    var l = req.body.language;
+    var p = req.body.paste;
     
-    res.render('paste');
+    res.render('pasted', { language: l, pastedcontent: p });
 });
 
 module.exports = router;

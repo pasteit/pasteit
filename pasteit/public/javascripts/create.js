@@ -10,6 +10,7 @@ $(document).ready(function ( ) {
         "C"               : ["clike"],
         "Java"            : ["clike"],
         "Objective-C"     : ["clike"],
+        "C#"              : ["clike"],
         "Clojure"         : ["clojure"],
         "Apricot"         : ["clojure"],
         "CoffeeScript"    : ["coffeescript"],
@@ -22,7 +23,7 @@ $(document).ready(function ( ) {
         "Lua"             : ["lua"],
         "Delphi"          : ["pascal"],
         "Perl"            : ["perl"],
-        "PHP"             : ["css", "javascript", "xml", "clike", "php"],
+        "PHP"             : ["php"],
         "Java Properties" : ["properties"],
         "Python"          : ["python"],
         "R"               : ["r"],
@@ -34,10 +35,9 @@ $(document).ready(function ( ) {
         "Verilog"         : ["verilog"],
         "XML"             : ["xml"],
         "YAML"            : ["yaml"],
-        "HTML"            : ["css", "xml", "javascript", "htmlmixed"],
+        "HTML"            : ["htmlmixed"],
         "MySQL"           : ["mysql"],
         "OCaml"           : ["ocaml"],
-        "RPM Spec"        : [{mode: "spec", path: "rpm/spec/spec"}]
     };
 
     for(var l in languages) {
@@ -54,8 +54,8 @@ $(document).ready(function ( ) {
 
         editor.setOption("mode", selected.val());
         editor.refresh();
-
-
+        
+        setLang();
     });
 
     $("#submit-button").on("click", function() {
@@ -64,9 +64,8 @@ $(document).ready(function ( ) {
     });
 
     var setupLang = function( lang, editor ) {
-        var modes = languages[lang];
-        if ( modes ) {
-            setMode(modes, editor);
+        if ( lang ) {
+            setMode(lang, editor);
         } else {
             editor.setOption( "mode", null );
         }
@@ -86,7 +85,7 @@ $(document).ready(function ( ) {
     };
 
     var fnotLoaded = function(mode) {
-        return !(mode in refheap.loaded);
+        return !(mode in loaded);
     };
 
     var setMode = function(modes, editor) {
