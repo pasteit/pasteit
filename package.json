@@ -15,5 +15,8 @@
     "code"
   ],
   "author": "Maximilian Klingmann",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "package.json": "^2.0.1"
+  }
 }
