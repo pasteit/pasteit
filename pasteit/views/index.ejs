@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="/javascripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="/javascripts/chosen.jquery.min.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+        <link id="last-include" href="/stylesheets/refheap.css" rel="stylesheet" type="text/css"/>
+        <link href="/javascripts/codemirror/lib/codemirror.css" rel="stylesheet" />
+        <link href="/stylesheets/cmtn.css" rel="stylesheet" />
+        <link href="/stylesheets/chosen.css" rel="stylesheet" type="text/css" />
+        <script src="/javascripts/codemirror/lib/codemirror.js"></script>
+        <script src="/javascripts/codemirror/mode/diff/diff.js"></script>
+        <script src="/javascripts/create.js" type="text/javascript"></script>
+        <script src="/javascripts/refheap.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="site-container">
+            <div id="header">
+                <a id="site" href="/">PasteIt!</a>
+                <div class="headerlinks">
+                    <div id="starting">
+                        <ul class="spacedlist">
+                            <li id="last"><a href="/about">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div id="container" class="clearfix">
+                    <div id="main-container">
+                        <div id="paste-container">
+                            <form name="paste" action="submitPaste" method="post">
+                                <div id="paste-header">
+                                    <input type="hidden" name="mime" id="mime" value=""></input>
+                                    <select id="language" name="language">
+                                        <option value=""></option>
+                                        <option selected value=""></option>
+                                    </select>
+                                    <input id="submit-button" value="Submit" type="submit" />
+                                </div>
+                                <textarea name="paste" id="paste"></textarea>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p class="centered">
+                    <a href="https://github.com/macskay/pasteit">PasteIt!</a> is a JavaScript adaption of
+                    <a href="https://github.com/Raynes/refheap">RefHeap</a>
+                </div>
+            </div>
+        </div>
+        <div id="help-bubble-tray">
+            <div id="help-dialog">
+                <h3>
+                    Did you know?
+                    <span>CLOSE</span>
+                </h3>
+                <div>
+                    <ul>
+                        <li class="help-subject">
+                            There are keyboard shortcuts!
+                            <ul>
+                                <li class="help-title">When Creating A Paste</li>
+                                <li>
+                                    <ul>
+                                        <li class="help-line">
+                                            <span class="hotkey">ALT+P</span>
+                                            Toggle Private
+                                        </li>
+                                        <li class="help-line">
+                                            <span class="hotkey">CTRL+Enter</span>
+                                            Create Paste
+                                        </li>
+                                        <li class="help-line">
+                                            <span class="hotkey">ALT+W</span>
+                                            Toggle word wrap
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="help-title">When Viewing A Paste</li>
+                                <li>
+                                    <ul>
+                                        <li class="help-line">
+                                            <span class="hotkey">ALT+G</span>
+                                            Go to a line
+                                        </li>
+                                        <li class="help-line">
+                                            <span class="hotkey">ALT+CTRL+E</span>
+                                            Edit the paste
+                                        </li>
+                                        <li class="help-line">
+                                            <span class="hotkey">ALT+R</span>
+                                            Show the raw code
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="help-subject">
+                            There are URL options!
+                            <ul>
+                                <li class="help-title">
+                                    When Creating A Paste
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="help-line">
+                                            ?lang=Javascript to default to javascript
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="help-title">When Viewing A Paste</li>
+                                <li>
+                                    <ul>
+                                        <li class="help-line">#L-N Jump to line number N</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <span id="help-bubble">?</span>
+        </div>
+        <script type="text/javascript">//<![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-28074244-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+//]]>
+        </script>
+    </body>
+</html>
