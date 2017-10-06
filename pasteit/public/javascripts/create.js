@@ -87,6 +87,9 @@ $(document).ready(function ( ) {
 
     setCodeHeight(editor);
 
+    window.editor = CodeMirror.fromTextArea( $('#paste')[0], { lineNumbers: true,
+        theme: 'cmtn'} );
+
 });
 
 
