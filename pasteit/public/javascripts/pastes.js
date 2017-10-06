@@ -59,7 +59,7 @@
 	      width: $cont.outerWidth(),
 	      zIndex: 1000,
 	      overflow: "scroll"
-	    });         
+	    });
           },
 	  ctrlCHandler = function ( e ) {
 	    $( pre ).fadeOut( "fast", function () {
@@ -126,10 +126,19 @@
     });
 
     // Setup hotkeys
-    Mousetrap.bind( "alt+g", refheap.gotoLine );
-    Mousetrap.bind( "alt+ctrl+e", refheap.gotoEdit );
-    Mousetrap.bind( "alt+r", refheap.showRaw );
+    Mousetrap.bindGlobal("alt+g", refheap.gotoLine );
+    Mousetrap.bindGlobal("alt+w", function () {
+      editor.setOption("lineWrapping", !editor.options.lineWrapping);
+    });
+    Mousetrap.bindGlobal("alt+r", refheap.showRaw);
+    Mousetrap.bindGlobal("alt+ctrl+e", refheap.gotoEdit);
+    Mousetrap.bindGlobal("ctrl+enter", function () {
+      $("#submit-button").click();
+    });
+    
+
   });
 
-}( jQuery, window ));
+  window.refheap = refheap;
 
+}( jQuery, window ));

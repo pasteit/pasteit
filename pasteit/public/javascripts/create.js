@@ -41,6 +41,6 @@ $(document).ready(function ( ) {
 
     $("#language").chosen();
 
-    var editor = CodeMirror.fromTextArea( $('#paste')[0], { lineNumbers: true,
+    window.editor = CodeMirror.fromTextArea( $('#paste')[0], { lineNumbers: true,
         theme: 'cmtn'} );
 });
