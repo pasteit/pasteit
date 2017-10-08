@@ -14,14 +14,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/submitPaste', function(req, res, next) { 
-    var l = req.body.language;
-    var p = req.body.paste;
-    var m = req.body.mime;
-
     var new_paste = {
-        "language": l,
-        "paste": p,
-        "mime" : m
+        "language": req.body.language,
+        "paste": req.body.paste,
+        "mime" : req.body.mime
     }
 
     var hash = getNewHash();
