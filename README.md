@@ -11,3 +11,14 @@ PasteIt! is written in JavaScript using express other than the original [RefHeap
 Since the passing of [Anthony Grimes](https://github.com/Raynes) in early 2016 the RefHeap project has almost been fully abandoned and the website went offline a few weeks back.
 To keep the legacy of Raynes and the awesome projects he worked on we decided to create PasteIt, which is very closely modeled and designed to the original RefHeap.
 
+
+
+# Redis on Ubuntu
+
+sudo apt install redis-server
+sudo systemctl start redis
+sudo systemctl status redis (to check if running)
+
+redis-cli (for command-line client)
+
+In development mode no password is required.
