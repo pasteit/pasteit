@@ -14,10 +14,10 @@
     "paste",
     "code"
   ],
-  "author": "Maximilian Klingmann",
+  "author": "Maximilian Klingmann & William Kevin Manire",
   "license": "GPL-3.0",
   "dependencies": {
-  "package.json": "^2.0.1"
+  "package.json": "^2.0.1",
   "ejs": "^2.5.7"
   }
 }
