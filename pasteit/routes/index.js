@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 var router = express();
 var redis = require("redis");
 var client = redis.createClient();
-var flatten = require("flat")
 var uuid = require("uuid4");
 
 var getNewHash = function() {
