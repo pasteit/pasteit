@@ -4,6 +4,7 @@ var router = express();
 var redis = require("redis");
 var client = redis.createClient();
 var flatten = require("flat")
+var uuid = require("uuid4");
 
 var getNewHash = function() {
     return (Math.floor(Math.random() * 1e15) + new Date().getMilliseconds()).toString(36);
@@ -20,25 +21,32 @@ router.post('/submitPaste', function(req, res, next) {
         "mime" : req.body.mime
     }
 
-    var hash = getNewHash();
-
+    var hash = uuid();
     client.hmset(hash, new_paste);
 
     res.redirect("/"+hash);  
+});
+
+router.get("/error", function(req, res) {
+    res.render("error");
 });
 
 router.get("/:hash/", function(req, res) {
     var hash = req.params.hash;
 
     var result = client.hgetall(hash, function(err, reply) {
-        var paste = {
-            language : reply.language,
-            pastedcontent : reply.paste,
-            mime : reply.mime,
-            tag : reply.tag
-        }
+        if(reply == null) {
+            res.redirect("/error");
+        } else {
+            var paste = {
+                language : reply.language,
+                pastedcontent : reply.paste,
+                mime : reply.mime,
+                tag : reply.tag
+            }
 
-        res.render("pasted", paste);
+            res.render("pasted", paste);
+        }
     });
 });
 
