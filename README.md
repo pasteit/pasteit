@@ -15,9 +15,9 @@ To keep the legacy of Raynes and the awesome projects he worked on we decided to
 
 # Redis on Ubuntu
 
-sudo apt install redis-server
-sudo systemctl start redis
-sudo systemctl status redis (to check if running)
+- sudo apt install redis-server
+- sudo systemctl start redis
+- sudo systemctl status redis (to check if running)
 
 redis-cli (for command-line client)
 
