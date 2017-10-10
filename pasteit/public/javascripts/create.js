@@ -55,6 +55,7 @@ $(document).ready(function ( ) {
 
     $("#language").chosen();
 
+
     $("#language").on("change", function(item) {
         setMime();
     });
@@ -86,6 +87,9 @@ $(document).ready(function ( ) {
     });
 
     setCodeHeight(editor);
+
+
+    window.editor = editor;
 
 });
 
