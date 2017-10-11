@@ -125,7 +125,7 @@ div#paste-header {
     margin-left: 100%;
     float: right;
     overflow: visible;
-    width: 250px;
+    width: 100%;
     padding-bottom: 3px;
 }
 
@@ -629,4 +629,8 @@ pre,code {
 
 code {
     color: #A786D8;
+}
+
+.btn-delete {
+    float: right;
 }

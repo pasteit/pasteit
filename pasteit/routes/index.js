@@ -5,10 +5,6 @@ var redis = require("redis");
 var client = redis.createClient();
 var uuid = require("uuid4");
 
-var getNewHash = function() {
-    return (Math.floor(Math.random() * 1e15) + new Date().getMilliseconds()).toString(36);
-};
-
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });
@@ -47,6 +43,13 @@ router.get("/:hash/", function(req, res) {
             res.render("pasted", paste);
         }
     });
+});
+
+router.get("/delete/:hash", function(req, res) {
+    var hash = req.params.hash;
+    client.del(hash);
+
+    res.redirect("/");
 });
 
 module.exports = router;
