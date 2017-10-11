@@ -18,6 +18,8 @@ $(document).ready(function() {
     editor.getDoc().setValue($("#pasted-content").val());
     editor.refresh();
 
-    $("#delete").prop("href", "/delete" + window.location.pathname);
+    var url = window.location.pathname;
+    var hash = url.split("/").slice(-1)[0];
+    $("#delete").prop("href", "/delete/" + hash);
     $("#lang-hr").text(humanReadable);
 });
