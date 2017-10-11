@@ -41,9 +41,9 @@ var mimes = {
     "Java" : "text/x-java",
 };
 
-var getLangKey = function(value) {
+var getLangKey = function(languageKey) {
     for(var k in languages) 
-        if(languages[k] == value || mimes[k] == value) 
+        if(languages[k] == languageKey || mimes[k] == languageKey) 
             return k;     
     
 }

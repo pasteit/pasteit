@@ -5,7 +5,7 @@ $(document).ready(function() {
         mode = $('#mime-type').val();
     else
         mode = $("#selected-mode").val();
-    var humanreadable = getLangKey(mode);
+    var humanReadable = getLangKey(mode);
     
     var editor = CodeMirror.fromTextArea( $('#paste')[0], { 
         lineNumbers: true, 
@@ -18,6 +18,6 @@ $(document).ready(function() {
     editor.getDoc().setValue($("#pasted-content").val());
     editor.refresh();
 
-    $("#delete").prop("href", "/delete"+window.location.pathname);
-    $("#lang-hr").text(humanreadable);
+    $("#delete").prop("href", "/delete" + window.location.pathname);
+    $("#lang-hr").text(humanReadable);
 });

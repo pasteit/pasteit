@@ -630,3 +630,7 @@ pre,code {
 code {
     color: #A786D8;
 }
+
+.btn-delete {
+    float: right;
+}
