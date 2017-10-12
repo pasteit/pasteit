@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/submitPaste', function(req, res, next) {
     let hash = fn.newPaste(req);
-    res.redirect(path.join("/p/", hash));
+    res.redirect(path.join("p", hash));
 });
 
 router.get('/p/:hash/', function(req, res) {

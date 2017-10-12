@@ -10,7 +10,7 @@ router.get('/api', function(req, res) {
 router.route('/api/create')
     .post(function(req, res) {
         let hash = fn.newPaste(req);
-        res.json({paste_url: path.join(req.get('host'), '/p/', hash)});
+        res.json({paste_url: path.join(req.get('host'), 'p', hash)});
 });
 
 router.route('/api/p/')
