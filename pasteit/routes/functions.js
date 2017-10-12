@@ -1,7 +1,9 @@
 let redis = require('redis');
-let redisClient = redis.createClient();
 let uuid = require('uuid4');
-
+let common = require('./common');
+let config = common.config();
+let redisClient = redis.createClient();
+redisClient.auth(config.redispw);
 
 module.exports = {
     newPaste: function(req) {
