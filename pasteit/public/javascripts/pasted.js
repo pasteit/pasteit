@@ -1,25 +1,26 @@
 $(document).ready(function() {
+    let mode = '';
 
-    var mode = "";
-    if( $('#mime-type').val() != "" ) 
+    if ($('#mime-type').val() != '') {
         mode = $('#mime-type').val();
-    else
-        mode = $("#selected-mode").val();
-    var humanReadable = getLangKey(mode);
-    
-    var editor = CodeMirror.fromTextArea( $('#paste')[0], { 
-        lineNumbers: true, 
-        readOnly: true, 
+    } else {
+        mode = $('#selected-mode').val();
+    }
+
+    let humanReadable = getLangKey(mode);
+    let editor = CodeMirror.fromTextArea( $('#paste')[0], {
+        lineNumbers: true,
+        readOnly: true,
         nocursor: true,
         theme: 'cmtn',
-        mode: mode
+        mode: mode,
     });
 
-    editor.getDoc().setValue($("#pasted-content").val());
+    editor.getDoc().setValue($('#pasted-content').val());
     editor.refresh();
 
-    var url = window.location.pathname;
-    var hash = url.split("/").slice(-1)[0];
-    $("#delete").prop("href", "/delete/" + hash);
-    $("#lang-hr").text(humanReadable);
+    let url = window.location.pathname;
+    let hash = url.split('/').slice(-1)[0];
+    $('#delete').prop('href', '/delete/' + hash);
+    $('#lang-hr').text(humanReadable);
 });
