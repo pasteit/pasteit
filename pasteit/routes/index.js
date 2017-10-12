@@ -1,55 +1,36 @@
-var express = require('express');
-var bodyParser = require("body-parser");
-var router = express();
-var redis = require("redis");
-var client = redis.createClient();
-var uuid = require("uuid4");
+let express = require('express');
+let router = express();
+let fn = require('./functions');
+let path = require('path');
+
+router.get('/error', function(req, res) {
+    res.render('error');
+});
 
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index', {title: 'Express'});
 });
 
-router.post('/submitPaste', function(req, res, next) { 
-    var new_paste = {
-        "language": req.body.language,
-        "paste": req.body.paste,
-        "mime" : req.body.mime
-    }
-
-    var hash = uuid();
-    client.hmset(hash, new_paste);
-
-    res.redirect("/"+hash);  
+router.post('/submitPaste', function(req, res, next) {
+    let hash = fn.newPaste(req);
+    res.redirect(path.join("p", hash));
 });
 
-router.get("/error", function(req, res) {
-    res.render("error");
-});
-
-router.get("/:hash/", function(req, res) {
-    var hash = req.params.hash;
-
-    var result = client.hgetall(hash, function(err, reply) {
-        if(reply == null) {
-            res.redirect("/error");
+router.get('/p/:hash/', function(req, res) {
+    fn.getPaste(req.params.hash, function(paste) {
+        if (paste === null) {
+            res.status(404).send('Not found');
         } else {
-            var paste = {
-                language : reply.language,
-                pastedcontent : reply.paste,
-                mime : reply.mime,
-                tag : reply.tag
-            }
-
-            res.render("pasted", paste);
+            res.render('pasted', paste);
         }
     });
 });
 
-router.get("/delete/:hash", function(req, res) {
-    var hash = req.params.hash;
+router.get('/delete/:hash', function(req, res) {
+    let hash = req.params.hash;
     client.del(hash);
 
-    res.redirect("/");
+    res.redirect('/');
 });
 
 module.exports = router;
