@@ -157,6 +157,12 @@ div#paste-header input[type="submit"] {
     float: right;
 }
 
+div#word-wrap-toggle {
+    -webkit-appearance: default-button;
+    float: right;
+    padding-right: 16px;
+}
+
 div#paste-header input[type="checkbox"]{
     margin-left: 15px;
 }
