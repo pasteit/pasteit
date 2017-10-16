@@ -32,6 +32,7 @@ To test your changes you need to setup a redis-server as well as node on your ma
 
 In development mode no password is required by default.
 
+
 #### Nodejs on Ubuntu ####
 
     sudo apt install nodejs-legacy
