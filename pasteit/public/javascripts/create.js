@@ -1,3 +1,4 @@
+/*global $ mimes paste CodeMirror languages setMime */
 $(document).ready(function() {
     let editor = CodeMirror.fromTextArea( $('#paste')[0], {lineNumbers: true,
         theme: 'cmtn'} );
@@ -20,6 +21,10 @@ $(document).ready(function() {
         $( 'form[name=paste]' ).submit();
     });
 
+    $('input[type=radio][name=ww-toggle]').change(function() {
+        editor.setOption('lineWrapping', this.value==="enabled");
+    });    
+
     let setMime = function() {
         let mime = $('#language option:selected').text();
         $('#mime').val(mimes[mime]);
@@ -27,10 +32,10 @@ $(document).ready(function() {
 
     editor.setOption( 'extraKeys', {
         'Ctrl-Enter': paste,
-        'Alt-W': toggleWrapping,
+        'Alt-W': toggleWrapping
     });
 
-    setCodeHeight = function(editor) {
+    var setCodeHeight = function(editor) {
         let currentHeight = $( window ).height();
         if ( currentHeight > 600 ) {
             $('.CodeMirror').height( currentHeight - 200 );
