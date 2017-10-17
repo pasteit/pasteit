@@ -2,13 +2,15 @@ let express = require('express');
 let router = express();
 let fn = require('./functions');
 let path = require('path');
+let common = require('./common');
+let config = common.config();
 
 router.get('/error', function(req, res) {
     res.render('error');
 });
 
 router.get('/', function(req, res, next) {
-    res.render('index', {title: 'Express'});
+    res.render('index', {title: 'Express', version: config.version });
 });
 
 router.post('/submitPaste', function(req, res, next) {
