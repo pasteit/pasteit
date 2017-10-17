@@ -39,6 +39,7 @@ module.exports = {
                     'pastedcontent': reply.paste,
                     'mime': reply.mime,
                     'tag': reply.tag,
+                    'version': config.version,
                 };
             }
 
