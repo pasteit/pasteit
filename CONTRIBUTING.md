@@ -1,12 +1,14 @@
 # Contributing
 
-First off, we want to thank you for your interest in helping this project grow and be kept alive. To make sure all additions maintain a certain quality and the code stays up-to-par we ask you the read the following before submitting any new features/bugfixes etc.
+First off, we want to thank you for your interest in helping this project grow and be kept alive. To make sure all additions help the project acheive its goals6 we ask you the read the following before submitting any new features/bugfixes etc.
 
 ## Code Style & Naming Conventions
 
 ### Code Style ###
 
-TODO
+For all javascript, run eslint before submitting the PR.
+For CSS use csslint.
+For HTML, please contribute only well formed, valid markup as defined for the doctype. Follow the examples in existing HTML files.
 
 ### Naming new branches ###
 Branches should always show the issue type as well as the issue number and a short description of the problem.
@@ -18,7 +20,7 @@ Pull Requests should be named like the issue worked on.
 
 ## Testing your changes ##
 
-To test your changes you need to setup a redis-server as well as node on your machine.
+Please do not submit a PR without first actually running pasteit locally to verify everything is still working. To test your changes you need to setup a redis-server as well as node on your machine. Additionally, write unit tests and integration tests as needed, following the examples for other such tests in the repository. Administrators will run your submission against the test suite beforee merging.
 
 ### Ubuntu ###
 
@@ -73,4 +75,4 @@ Create a PR on this project to have your changes merged into the develop branch
   - When opening a PR please name it as stated in section Naming Conventions
   - Please add a "Resolves #<issue>" to the body of the PR to link the issue you worked on
      
-Await the review, which can only be done and therefore approved by one of the administrators. If your changes are good enough and do solve the problems stated in the issue they will get merged back to the develop branch.
+Anyone is welcome to contribute reviews, but pull requests will only be merged by administrators. If your changes satisfy the requirements in the issue, and also meet the commit guidlines, then they will get merged back to the develop branch.
